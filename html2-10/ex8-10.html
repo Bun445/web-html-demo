@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Web Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #333;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ccc;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #000407;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            color: #007BFF;
+            display: inline-block;
+            border-bottom: 2px solid #007BFF;
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            color: #007BFF;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .about p {
+            font-style: italic;
+        }
+        .contact ul {
+            list-style: none;
+            padding: 0;
+        }
+        .contact li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about" class="about">
+        <h1>John Doe</h1>
+        <h2>Web Developer</h2>
+        <p>A passionate web developer with experience in HTML, CSS, and JavaScript skills</p>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p>University of Technology 2016-2020</p>
+        <h3>High School Diploma</h3>
+        <p>City High School 2012-2016</p>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <h3>Junior Web Developer</h3>
+        <p>Tech Solutions Inc. 2020 - Present</p>
+        <ul>
+            <li>Developed and maintained company websites interfaces</li>
+            <li>Collaborated with design team to implement user interfaces</li>
+            <li>Optimized websites for maximum speed and scalability</li>
+        </ul>
+        <h3>Web Development Intern</h3>
+        <p>Digital Creations Summer 2019</p>
+        <ul>
+            <li>Created responsive designs for mobile platforms</li>
+            <li>Participated in client meetings and presentations</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Responsive Design</li>
+            <li>Problem Solving</li>
+            <li>Team Collaboration</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: john@email.com</li>
+            <li>Phone: (123) 456-7890</li>
+            <li>LinkedIn: <a href="https://linkedin.com/in/johndoe">linkedin.com/in/johndoe</a></li>
+            <li>GitHub: <a href="https://github.com/johndoe">github.com/johndoe</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 John Doe. All rights reserved.</p>
+        <p>Created using basic HTML & CSS.</p>
+    </footer>
+
+    <script>
+        // Chức năng cuộn mượt đến các phần
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
