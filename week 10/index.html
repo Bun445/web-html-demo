@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Mini Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <h2>MINI CALCULATOR</h2>
+
+    <form name="frmCal">
+        <label>a = </label>
+        <input type="text" name="txta">
+
+        <label>b = </label>
+        <input type="text" name="txtb">
+
+        <label>Operator</label>
+        <select name="slto">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+            <option value="^">Power (a^b)</option>
+        </select>
+
+        <label>Result</label>
+        <input type="text" name="txtr" readonly>
+
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+</div>
+</body>
+</html>
