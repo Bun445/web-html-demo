@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mini calculator</title>
+<style>
+    body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    form {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-top: 0;
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+    table {
+        width: 100%;
+    }
+    td {
+        padding: 5px;
+    }
+</style>
+<script language="javascript">
+function calculate() {
+    var a = document.frmCal.txta;
+    var b = document.frmCal.txtb;
+    var o = document.frmCal.slto;
+    var r = document.frmCal.txtr;
+
+    var numberFormat = /^[+-]?\d+(\.\d+)?$/;
+
+    if (numberFormat.test(a.value) == false) {
+        alert("a must be a number!");
+        a.focus();
+    } else if (numberFormat.test(b.value) == false) {
+        alert("b must be a number!");
+        b.focus();
+    } else if ((o.value == "/" || o.value == "%") && parseInt(b.value) == 0) {
+        alert("b can't be 0!");
+        r.value = "";
+        b.focus();
+    } else
+        r.value = eval(a.value + o.value + b.value);
+}
+</script>
+</head>
+<body>
+<form name="frmCal">
+    <table border="0" align="center">
+        <tr><td colspan="2" align="center">
+            <h2>MINI CALCULATOR</h2></td></tr>
+        <tr><td colspan="2" align="center">
+            <span id="error-msg" style="color: red;"></span>
+        </td></tr>
+        <tr><td align="right">a = </td>
+            <td><input name="txta" /></td></tr>
+        <tr><td align="right">b = </td>
+            <td><input name="txtb" /></td></tr>
+        <tr><td align="right">Operator: </td>
+            <td><select name="slto">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                    <option value="**">^</option>
+                </select>
+            </td></tr>
+        <tr><td align="right">Result: </td>
+            <td><input name="txtr" readonly /></td></tr>
+        <tr><td colspan="2" align="center">
+            <input type="button" value="Calculate"
+                   onclick="calculate()" />
+        </td></tr>
+    </table>
+</form>
+<script>
+function calculate() {
+    var a = document.frmCal.txta;
+    var b = document.frmCal.txtb;
+    var o = document.frmCal.slto;
+    var r = document.frmCal.txtr;
+    var errorMsg = document.getElementById("error-msg");
+
+    errorMsg.innerHTML = "";
+    r.value = "";
+
+    var numberFormat = /^[+-]?\d+(\.\d+)?$/;
+
+    if (numberFormat.test(a.value) == false) {
+        errorMsg.innerHTML = "a must be a number!";
+        a.focus();
+        return;
+    }
+    if (numberFormat.test(b.value) == false) {
+        errorMsg.innerHTML = "b must be a number!";
+        b.focus();
+        return;
+    }
+
+    var numA = parseFloat(a.value);
+    var numB = parseFloat(b.value);
+    var result;
+
+    switch (o.value) {
+        case "+":
+            result = numA + numB;
+            break;
+        case "-":
+            result = numA - numB;
+            break;
+        case "*":
+            result = numA * numB;
+            break;
+        case "/":
+            if (numB === 0) {
+                errorMsg.innerHTML = "b can't be 0 for division!";
+                b.focus();
+                return;
+            }
+            result = numA / numB;
+            break;
+        case "%":
+            if (numB === 0) {
+                errorMsg.innerHTML = "b can't be 0 for modulus!";
+                b.focus();
+                return;
+            }
+            result = numA % numB;
+            break;
+        case "**":
+            result = Math.pow(numA, numB);
+            break;
+        default:
+            errorMsg.innerHTML = "Invalid operator!";
+            return;
+    }
+
+    r.value = result;
+}
+</script>
+</body>
+</html>

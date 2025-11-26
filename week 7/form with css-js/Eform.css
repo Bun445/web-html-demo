@@ -1,0 +1,294 @@
+/* --- Cài đặt gốc và Biến --- */
+:root {
+    --primary-text: #333;
+    --secondary-text: #666; /* Hơi đậm hơn để khớp ảnh */
+    --border-color: #e0e0e0; /* Nhạt hơn một chút */
+    --border-focus: #007bff;
+    --bg-color: #f8f8f8; /* Nền sáng hơn */
+    --form-bg: #ffffff;
+    --button-bg: #222;
+    --button-hover: #000;
+    --danger-color: #d9534f;
+    --placeholder-color: #a0a0a0; /* Màu placeholder cụ thể */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Container Form --- */
+.contact-container {
+    background: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 3rem; /* Điều chỉnh padding */
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- Header Section (Contact us và Chat with us) --- */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem; /* Tạo khoảng cách với đường gạch dưới */
+    border-bottom: 1px solid #eee; /* Đường gạch dưới */
+}
+
+.form-title {
+    font-size: 1.8rem; /* Lớn hơn */
+    font-weight: 600;
+    color: var(--primary-text);
+}
+
+.chat-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    cursor: pointer;
+}
+
+.chat-option i {
+    color: #4CAF50; /* Màu xanh lá cho icon chat */
+    font-size: 1.1rem;
+}
+
+/* --- Nhóm Form (Label + Input) --- */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.6rem; /* Tăng khoảng cách một chút */
+    font-weight: 500; /* Nhẹ hơn một chút */
+    font-size: 0.95rem; /* Lớn hơn một chút */
+    color: var(--secondary-text); /* Màu label */
+}
+
+/* Thêm dấu * cho label có class 'required' */
+label.required::after {
+    content: ' *';
+    color: var(--danger-color);
+    margin-left: 2px;
+}
+
+/* --- Input, Select, Textarea --- */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem; /* Tăng padding */
+    border: 1px solid var(--border-color);
+    border-radius: 6px; /* Bo góc nhẹ hơn */
+    font-size: 0.95rem; /* Điều chỉnh font size */
+    color: var(--primary-text);
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #88c0eb; /* Màu xanh nhạt khi focus */
+    box-shadow: 0 0 0 3px rgba(136, 192, 235, 0.3); /* Shadow tinh tế */
+}
+
+/* Placeholder Styling */
+::placeholder {
+    color: var(--placeholder-color);
+    opacity: 1; /* Firefox default opacity */
+}
+::-webkit-input-placeholder { /* Chrome, Edge, Safari */
+    color: var(--placeholder-color);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: var(--placeholder-color);
+}
+:-ms-input-placeholder { /* IE 10-11 */
+    color: var(--placeholder-color);
+}
+:-moz-placeholder { /* Pre-Firefox 19 */
+    color: var(--placeholder-color);
+}
+
+/* Select placeholder color */
+select:required:invalid {
+    color: var(--placeholder-color);
+}
+option[value=""][disabled] {
+    display: none;
+}
+option {
+    color: var(--primary-text);
+}
+
+
+/* --- Input với Icon --- */
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .input-icon {
+    position: absolute;
+    right: 15px; /* Icon ở bên phải */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b0b0b0; /* Màu nhạt */
+    font-size: 1rem; /* Kích thước icon */
+    pointer-events: none; /* Không chặn click vào input */
+    transition: color 0.2s;
+}
+
+.input-wrapper input:focus + .input-icon {
+    color: var(--border-focus); /* Thay đổi màu icon khi focus */
+}
+
+/* Ẩn icon nếu input có giá trị (tùy chọn) */
+/* .input-wrapper input:not(:placeholder-shown) + .input-icon {
+    opacity: 0;
+} */
+
+
+/* --- Khu vực File Upload --- */
+.file-dropzone {
+    display: flex;
+    flex-direction: row; /* Icon và text nằm ngang */
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem; /* Khoảng cách giữa icon và text */
+    padding: 1.2rem; /* Giảm padding một chút */
+    border: 1px solid var(--border-color); /* Border thay vì dashed */
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    color: var(--secondary-text);
+    transition: background-color 0.2s, border-color 0.2s;
+    background-color: #fdfdfd; /* Nền nhẹ hơn cho dropzone */
+}
+
+.file-dropzone:hover {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+}
+
+.file-dropzone .file-icon {
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.file-dropzone span {
+    font-weight: 500;
+    color: var(--primary-text);
+    font-size: 0.95rem;
+}
+
+/* Giấu input file mặc định */
+input[type="file"] {
+    display: none;
+}
+
+#file-list-container {
+    margin-top: 0.5rem;
+}
+
+#file-list-container p {
+    font-size: 0.85rem;
+    background-color: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #444;
+}
+
+.file-help-text {
+    font-size: 0.8rem; /* Nhỏ hơn */
+    color: var(--secondary-text);
+    margin-top: 0.75rem;
+    text-align: left;
+}
+
+/* --- Nút Submit --- */
+.btn-submit {
+    width: 100%;
+    padding: 0.9rem; /* Tăng padding */
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 6px; /* Bo góc nhẹ hơn */
+    font-size: 1.05rem; /* Lớn hơn */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex; /* Dùng flex để căn giữa text và icon (nếu có) */
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa text và icon */
+    position: relative; /* Dùng cho icon loading */
+}
+
+.btn-submit:hover {
+    background-color: var(--button-hover);
+}
+
+/* Ẩn các icon loading/check mặc định */
+.loading-icon, .check-icon {
+    display: none;
+    position: absolute;
+    right: 15px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Khi đang gửi, hiển thị icon loading */
+.btn-submit.sending .loading-icon {
+    display: block;
+}
+
+/* Khi gửi thành công, hiển thị icon check */
+.btn-submit.sent .check-icon {
+    display: block;
+}
+/* Khi gửi thành công, text nút có thể thay đổi hoặc ẩn */
+.btn-submit.sent span {
+    opacity: 0; /* Ẩn text "Send" */
+}
+
+
+/* --- Chú thích reCAPTCHA --- */
+.recaptcha-text {
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.recaptcha-text a {
+    color: var(--primary-text);
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    font-weight: 500;
+}
+.recaptcha-text a:hover {
+    text-decoration: underline; /* Chỉ gạch chân khi hover */
+}
