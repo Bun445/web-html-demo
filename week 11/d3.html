@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript HTML Events</h1>
+<h2>The onclick Attribute</h2>
+
+<p id="demo">Click the button to display your personal information.</p>
+<button onclick="displayInfo()">Show Info</button>
+
+<script>
+function displayInfo() {
+  let text = `
+    <p><strong>Name:</strong>Duong Quoc Nam</p>
+    <p><strong>Gender:</strong>male</p>
+    <p><strong>Date of Birth:</strong> Apr 4, 2005</p>
+  `;
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
