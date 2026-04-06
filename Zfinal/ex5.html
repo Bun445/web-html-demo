@@ -1,0 +1,45 @@
+<!-- Exercise 5: Create a tabbed content interface with these requirements:1. Create 4 tabs: Features ®, Pricing €, Reviews, Support
+2. Add arrow icons (→) to indicate active tab
+3. Style tabs with different states (active/inactive)
+4. Add tab functionality that:
+o Shows corresponding content when tab is clicked
+o Use switchTab() function
+o Use classList.add() and classList.remove() -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.tab{padding:6px 10px;border:1px solid #aaa;cursor:pointer;background:#eee}
+.tab.active{background:#fff;font-weight:bold}
+.tab.active::before{content:"→ "}
+.content{display:none;border:1px solid #aaa;padding:10px}
+.content.active{display:block}
+</style>
+
+<script>
+function switchTab(n){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+  document.getElementById("t"+n).classList.add("active");
+  document.getElementById("c"+n).classList.add("active");
+}
+</script>
+</head>
+
+<body>
+
+<div>
+  <span id="t1" class="tab active" onclick="switchTab(1)">Features ®</span>
+  <span id="t2" class="tab" onclick="switchTab(2)">Pricing €</span>
+  <span id="t3" class="tab" onclick="switchTab(3)">Reviews</span>
+  <span id="t4" class="tab" onclick="switchTab(4)">Support</span>
+</div>
+
+<div id="c1" class="content active">Powerful features.</div>
+<div id="c2" class="content">Simple pricing.</div>
+<div id="c3" class="content">User reviews.</div>
+<div id="c4" class="content">Support info.</div>
+
+</body>
+</html>

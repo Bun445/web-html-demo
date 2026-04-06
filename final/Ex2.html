@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  section{margin-bottom:15px;background-color:#f9f9f9;padding:15px;border-radius:8px}
+  .veg-item{color:green}
+  .hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<div id="menu-list">
+  <section>
+    <h2>Appetizers ®</h2>
+    <ul>
+      <li class="veg-item menu-item">Salad ≥ 5</li>
+      <li class="menu-item">Chicken Wings ≥ 7</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Main Course §</h2>
+    <ul>
+      <li class="veg-item menu-item">Veggie Pasta ≥ 10</li>
+      <li class="menu-item">Beef Steak ≥ 15</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Desserts</h2>
+    <ul>
+      <li class="menu-item">Ice Cream ≥ 4</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Drinks</h2>
+    <ul>
+      <li class="veg-item menu-item">Orange Juice ≥ 3</li>
+      <li class="menu-item">Cola ≥ 2</li>
+    </ul>
+  </section>
+</div>
+
+<button onclick="filterMenu()">Filter Menu</button>
+
+<script>
+let vegOnly = false;
+
+function filterMenu(){
+  const items = document.getElementsByClassName("menu-item");
+
+  vegOnly = !vegOnly;
+
+  for(let i=0;i<items.length;i++){
+    if(vegOnly && !items[i].classList.contains("veg-item"))
+      items[i].classList.add("hidden");
+    else
+      items[i].classList.remove("hidden");
+  }
+}
+</script>
+
+</body>
+</html>

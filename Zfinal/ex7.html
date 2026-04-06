@@ -1,0 +1,81 @@
+<!-- Exercise 7: Create a simple contact form with these requirements:
+1. Include these fields:
+o Name (text input)
+o Email (email input)
+o Message (textarea)
+2. Add proper labels and submit button
+3. Style form with proper spacing and borders
+4. Add basic validation:
+o Check if fields are empty
+o Show success message when all filled -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+form {
+  width: 260px;
+  border: 1px solid #aaa;
+  padding: 12px;
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+}
+
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 6px;
+}
+#msg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const msg = document.getElementById("msg");
+
+  if (!name || !email || !message) {
+    msg.textContent = "Please fill in all fields.";
+    msg.style.color = "red";
+  } else {
+    msg.textContent = "Form submitted successfully!";
+    msg.style.color = "green";
+  }
+}
+</script>
+</head>
+
+<body>
+
+<form onsubmit="submitForm(event)">
+  <label>Name
+    <input type="text" id="name">
+  </label>
+
+  <label>Email
+    <input type="email" id="email">
+  </label>
+
+  <label>Message
+    <textarea id="message" rows="4"></textarea>
+  </label>
+
+  <button type="submit">Submit</button>
+
+  <div id="msg"></div>
+</form>
+
+</body>
+</html>

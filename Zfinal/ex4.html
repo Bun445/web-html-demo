@@ -1,0 +1,56 @@
+<!-- Exercise 4: Create a restaurant menu interface with these requirements:
+1. Create sections for: Appetizers ®, Main Course §, Desserts, Drinks
+2. Add prices with currency symbol (≥)
+3. Add "Filter Menu" button that:
+o Toggles between showing all items or only vegetarian options
+o Use filterMenu() function
+o Use getElementsByClassName() -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+section{margin-bottom:10px}
+.veg{color:green}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<h2>Appetizers ®</h2>
+<li class="veg item">Salad ≥ 5</li>
+<li class="item">Chicken Wings ≥ 7</li>
+
+<h2>Main Course §</h2>
+<li class="veg item">Veggie Pasta ≥ 10</li>
+<li class="item">Beef Steak ≥ 15</li>
+
+<h2>Desserts</h2>
+<li class="item">Ice Cream ≥ 4</li>
+
+<h2>Drinks</h2>
+<li class="veg item">Orange Juice ≥ 3</li>
+<li class="item">Cola ≥ 2</li>
+
+<button onclick="filterMenu()">Filter Menu</button>
+
+<script>
+let vegOnly = false;
+
+function filterMenu(){
+  const items = document.getElementsByClassName("item");
+
+  vegOnly = !vegOnly;
+
+  for(let i=0;i<items.length;i++){
+    if(vegOnly && !items[i].classList.contains("veg"))
+      items[i].classList.add("hidden");
+    else
+      items[i].classList.remove("hidden");
+  }
+}
+</script>
+
+</body>
+</html>

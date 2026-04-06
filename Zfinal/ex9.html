@@ -1,0 +1,62 @@
+<!-- Exercise 9: Create a product showcase with these requirements:1. Create a grid of 4 product cards showing:
+o Product name
+o Price
+o Short description
+2. Use HTML5 structure (DOCTYPE, head, body)
+3. Include these HTML entities: ®, €, →
+4. Style cards with box-shadow and hover effects
+5. Add "Toggle Price" button that:
+o When clicked, hides all prices
+o Use togglePrice() function and getElementsByClassName() -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{padding:8px;border:1px solid #ccc;box-shadow:0 2px 6px #0003;transition:.2s}
+.card:hover{box-shadow:0 6px 14px #0005}
+.price{color:green;font-weight:bold}
+</style>
+
+<script>
+function togglePrice(){
+  let p=document.getElementsByClassName("price");
+  for(let i=0;i<p.length;i++)
+    p[i].style.display=p[i].style.display==="none"?"block":"none";
+}
+</script>
+</head>
+
+<body>
+
+<button onclick="togglePrice()">Toggle Price</button>
+
+<div class="grid">
+  <div class="card">
+    <h4>Laptop Pro ®</h4>
+    <div class="price">899 €</div>
+    <p>Fast and light →</p>
+  </div>
+
+  <div class="card">
+    <h4>Gaming Mouse</h4>
+    <div class="price">39 €</div>
+    <p>High precision →</p>
+  </div>
+
+  <div class="card">
+    <h4>Wireless Keyboard</h4>
+    <div class="price">59 €</div>
+    <p>Smooth typing →</p>
+  </div>
+
+  <div class="card">
+    <h4>HD Monitor ®</h4>
+    <div class="price">179 €</div>
+    <p>Clear display →</p>
+  </div>
+</div>
+
+</body>
+</html>

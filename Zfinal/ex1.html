@@ -1,0 +1,76 @@
+<!-- Exercise 1: Create a user registration form with these requirements:
+1. Include these fields:
+o Username (text input)
+o Password (password input)
+o Profile Picture (file input)
+2. Add validation rules:
+o Username must be 5-15 characters
+o Password must contain numbers and letters
+o Image file must be JPG or PNG
+3. Style form with Flexbox layout
+4. Add password strength indicator that:
+o Shows weak/medium/strong based on password
+o Updates in real-time as user types -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+
+<style>
+  body{display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;background:#a9bae6}
+  form{display:flex;flex-direction:column;gap:15px;background:#fff;padding:18px;border-radius:10px;width:300px}
+  .strength{font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<form id="registerForm">
+  <h3>Register</h3>
+
+  <input id="username" placeholder="Username (5–15)" required>
+
+  <input id="password" type="password" placeholder="Password" required>
+  <div id="strengthDisplay" class="strength"></div>
+
+  <input id="profilePic" type="file" accept=".jpg,.jpeg,.png" required>
+
+  <button>Submit</button>
+</form>
+
+<script>
+const f = document.getElementById("registerForm");
+const u = document.getElementById("username");
+const p = document.getElementById("password");
+const s = document.getElementById("strengthDisplay");
+const img = document.getElementById("profilePic");
+
+// strength realtime
+p.oninput = () => {
+  const v = p.value;
+  const a = /[a-zA-Z]/.test(v), n = /\d/.test(v);
+  s.textContent =
+    v.length < 6 || (!a && !n) ? "Weak" :
+    (a && n && v.length < 10) ? "Medium" :
+    (a && n) ? "Strong" : "";
+  s.style.color = s.textContent === "Strong" ? "green" :
+                  s.textContent === "Medium" ? "orange" : "red";
+};
+
+// validate submit
+f.onsubmit = e => {
+  if (u.value.length < 5 || u.value.length > 15)
+    return e.preventDefault(), alert("Username phải 5–15 ký tự");
+
+  if (!(/[a-zA-Z]/.test(p.value) && /\d/.test(p.value)))
+    return e.preventDefault(), alert("Password phải có chữ và số");
+
+  const file = img.files[0];
+  if (file && !["image/jpeg","image/png"].includes(file.type))
+    return e.preventDefault(), alert("Ảnh chỉ JPG hoặc PNG");
+};
+</script>
+
+</body>
+</html>

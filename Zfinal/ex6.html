@@ -1,0 +1,40 @@
+<!-- Exercise 6: Create a bookstore website navigation with these requirements:
+1. Create navigation with 4 links: Home, Books ©, Authors ™, Contact
+2. Add bullets (•) between navigation items
+3. Add "Toggle Menu" button that:
+o Shows/hides the navigation menu
+o Use toggleMenu() function
+o Use classList.toggle("hidden") -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+nav a { margin: 0 4px; }
+
+.hidden {
+  display: none;
+}
+</style>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("hidden");
+}
+</script>
+</head>
+
+<body>
+
+<button onclick="toggleMenu()">Toggle Menu</button>
+
+<nav id="menu">
+  <a href="#">Home</a> •
+  <a href="#">Books ©</a> •
+  <a href="#">Authors TM</a> •
+  <a href="#">Contact</a>
+</nav>
+
+</body>
+</html>

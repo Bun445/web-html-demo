@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+table{border-collapse:collapse}
+th,td{border:1px solid#000;padding:10px}
+tr:nth-child(even){background:#d7d1d1}
+</style>
+</head>
+
+<body>
+
+<h3>Grades ®</h3>
+<p>Rule § score ≥ 5</p>
+
+<table>
+  <thead>
+    <tr><th>Subject</th><th>Grade</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Math</td><td class="grade">8</td></tr>
+    <tr><td>English</td><td class="grade">7</td></tr>
+    <tr><td>Science</td><td class="grade">9</td></tr>
+    <tr><td>History</td><td class="grade">6</td></tr>
+  </tbody>
+</table>
+
+<button onclick="calculateAverage()">Calculate Average</button>
+<p id="result"></p>
+
+<script>
+function calculateAverage(){
+  let sum = 0;
+  const grades = document.querySelectorAll(".grade");
+  
+  grades.forEach(item => sum += Number(item.textContent));
+  
+  const avg = sum / grades.length;
+  const result = document.getElementById("result");
+  
+  result.textContent = "Average: " + avg.toFixed(2);
+  
+  //>= 8 (Xanh), >= 5 (Cam), < 5 (Đỏ)
+  if (avg >= 8) result.style.color = "green";
+  else if (avg >= 5) result.style.color = "orange";
+  else result.style.color = "red";
+}
+</script>
+
+</body>
+</html>

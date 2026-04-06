@@ -1,0 +1,61 @@
+<!-- Exercise 8: Create a newsletter subscription system with these requirements:
+1. Include these elements:
+o Full Name (text input)
+o Email (email input)
+o Subscription Type (radio buttons: Monthly/Yearly)
+o Interests (checkboxes)
+2. Add form validation with these rules:
+o Email must contain @ and domain
+o At least one interest must be selected
+3. Style form with CSS Grid layout
+4. Show success message when form is valid -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+form{display:grid;gap:8px;max-width:300px;border:1px solid #aaa;padding:10px}
+#msg{font-weight:bold}
+</style>
+
+<script>
+function subscribe(e){
+  e.preventDefault();
+  let email=document.getElementById("email").value.trim();
+  let interests=document.querySelectorAll("input[name=interest]:checked");
+  let ok=/^[^@]+@[^@]+\.[^@]+$/.test(email);
+  let msg=document.getElementById("msg");
+
+  if(!ok){msg.textContent="Email không hợp lệ";msg.style.color="red";return;}
+  if(interests.length===0){msg.textContent="Chọn ít nhất 1 sở thích";msg.style.color="red";return;}
+  msg.textContent="Đăng ký thành công!";msg.style.color="green";
+}
+</script>
+</head>
+
+<body>
+<form onsubmit="subscribe(event)">
+  <label>Full Name
+    <input type="text" id="full">
+  </label>
+
+  <label>Email
+    <input type="email" id="email">
+  </label>
+
+  <label>Subscription Type<br>
+    <input type="radio" name="type" checked> Monthly
+    <input type="radio" name="type"> Yearly
+  </label>
+
+  <label>Interests<br>
+    <input type="checkbox" name="interest"> Tech
+    <input type="checkbox" name="interest"> Books
+    <input type="checkbox" name="interest"> Deals
+  </label>
+
+  <button>Subscribe</button>
+  <div id="msg"></div>
+</form>
+</body>
+</html>
